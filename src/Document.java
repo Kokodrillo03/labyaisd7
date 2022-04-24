@@ -3,6 +3,7 @@
 
 import java.util.Arrays;
 import java.util.ListIterator;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Document implements IWithName {
@@ -13,6 +14,13 @@ public class Document implements IWithName {
 		this.name = name.toLowerCase();
 		link = new TwoWayCycledOrderedListWithSentinel<Link>();
 		load(scan);
+	}
+
+	public boolean equals(Object o){
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Document link = (Document) o;
+		return Objects.equals(name, link.name);
 	}
 
 	public void load(Scanner scan) {

@@ -30,7 +30,7 @@ public class HashTable{
 
 	
 	private void doubleArray() {
-		//TODO
+		size = size*2;
 	}
 
 
@@ -42,7 +42,7 @@ public class HashTable{
 	}
 
 	public Object get(Object toFind) {
-		//TODO
+
 		return null;
 	}
 	
