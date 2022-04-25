@@ -10,17 +10,21 @@ public class Document implements IWithName {
 	public String name;
 	public TwoWayCycledOrderedListWithSentinel<Link> link;
 
-	public Document(String name, Scanner scan) {
+	public Document(String nam, Scanner scan) {
 		this.name = name.toLowerCase();
 		link = new TwoWayCycledOrderedListWithSentinel<Link>();
 		load(scan);
 	}
 
+	public Document(String name){
+		this.name = name.toLowerCase();
+	}
+
 	public boolean equals(Object o){
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		Document link = (Document) o;
-		return Objects.equals(name, link.name);
+		Document doc = (Document) o;
+		return Objects.equals(name, doc.name);
 	}
 
 	public void load(Scanner scan) {
@@ -119,6 +123,26 @@ public class Document implements IWithName {
 	@Override
 	public String getName () {
 		// TODO
-		return null;
+		return name;
+	}
+
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		int[] numb = {7, 11, 13, 17, 19};
+		char[] ch = name.toCharArray();
+		for(int i = 0; i < ch.length; i++){
+			if(i==0){
+				hash += (int) ch[0];
+			}
+			else{
+				hash*=(numb[(i-1)%numb.length]);
+				hash+= (int) ch[i];
+			}
+			if(hash>1000000000){
+				hash %= 1000000000;
+			}
+		}
+		return hash;
 	}
 }

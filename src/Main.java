@@ -21,7 +21,7 @@ public class Main {
 			String word[]=line.split(" ");
 			//getdoc name - change document to name 
 			if(word[0].equalsIgnoreCase("getdoc") && word.length==2) {
-				currentDoc=(Document)hashTable.get(new Document(word[1],scan));
+				currentDoc=(Document)hashTable.get(new Document(word[1]));
 				continue;
 			}
 
